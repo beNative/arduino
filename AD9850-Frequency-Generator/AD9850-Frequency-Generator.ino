@@ -7,8 +7,7 @@
 * (12/02/2015)
 */
 
-// Include the library code
-#include <Wire.h>  // Comes with Arduino IDE
+#include <Wire.h>
 // note: the 'standard LiquidCrystal_I2C.h' does not work for us.
 #include "LiquidCrystal_I2C.h"
 #include <Switch.h>
