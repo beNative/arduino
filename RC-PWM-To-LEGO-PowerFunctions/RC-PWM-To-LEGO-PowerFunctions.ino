@@ -31,7 +31,7 @@ const byte AUX_OUT_PIN      = 10;
 
 // Servo indexes
 const byte SERVO_THROTTLE    = 0;
-const byte SERVO_STEERING 	 = 1;
+const byte SERVO_STEERING    = 1;
 const byte SERVO_AUX         = 2;
 const byte SERVO_FRAME_SPACE = 3;
 
