@@ -2,7 +2,7 @@
 Sources of my shared arduino projects currently maintained on codebender
 
 ##RC PWM To LEGO PowerFunctions
-The `RC-PWM-To-LEGO-PowerFunctions.ino` sketch converts a PWM signal from a typical RC receiver to the IR protocol used by LEGO Power Functions (which is open source BTW). It supports fully proportional control on two channels.  
+The `[RC-PWM-To-LEGO-PowerFunctions.ino](RC-PWM-To-LEGO-PowerFunctions.ino)` sketch converts a PWM signal from a typical RC receiver to the IR protocol used by LEGO Power Functions (which is open source BTW). It supports fully proportional control on two channels.  
 **Requirements:**  
 * 3 IR leds (I connect them in series and connect them to a digital output on the Arduino).
 * Arduino compatible board (I used the Pro Mini but any Arduino compatible board can be used.
