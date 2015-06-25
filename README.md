@@ -13,4 +13,11 @@ The `RC-PWM-To-LEGO-PowerFunctions.ino` sketch converts a PWM signal from a typi
 `JoyStickShield-To-LEGO-PowerFunctions.ino` uses the popular Joystick Arduino Shield in combination with some inexpensive NRF40 transceivers to make a better wireless control than the default IR way. It supports fully proportional control on two channels.
 
 ##AD9850 Frequency Generator
-The `AD9850-Frequency-Generator.ino` sketch interfaces with the AD9850 function generator board to make a simple yet powerfull function generator.
+The `AD9850-Frequency-Generator.ino` sketch interfaces with the AD9850 DDS 125MHz synthesizer board to make a simple yet powerful home made function generator.
+**Requirements:**
+- AD9850 DDS 125MHz synthesizer board.
+- 16x2 LCD display with I2C driver.
+- Arduino Pro Mini.
+- Rotary encoder.
+- A fancy enclosure.
+- Battery.
