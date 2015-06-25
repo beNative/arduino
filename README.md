@@ -10,10 +10,10 @@ The [RC-PWM-To-LEGO-PowerFunctions.ino](http://github.com/beNative/arduino/blob/
 * Battery (I use a simple rechargeable 9V battery for this connected to the RAW input on the Pro Mini) 
 
 ##JoyStickShield To LEGO PowerFunctions
-`JoyStickShield-To-LEGO-PowerFunctions.ino` uses the popular Joystick Arduino Shield in combination with some inexpensive NRF40 transceivers to make a better wireless control than the default IR way. It supports fully proportional control on two channels.
+[JoyStickShield-To-LEGO-PowerFunctions.ino](http://github.com/beNative/arduino/blob/master/JoyStickShield-To-LEGO-PowerFunctions/JoyStickShield-To-LEGO-PowerFunctions.ino) uses the popular Joystick Arduino Shield in combination with some inexpensive NRF40 transceivers to make a better wireless control than the default IR way. It supports fully proportional control on two channels.
 
 ##AD9850 Frequency Generator
-The `AD9850-Frequency-Generator.ino` sketch interfaces with the AD9850 DDS 125MHz synthesizer board to make a simple yet powerful home made function generator.  
+The [AD9850-Frequency-Generator.ino](http://github.com/beNative/arduino/blob/master/AD9850-Frequency-Generator/AD9850-Frequency-Generator.ino) sketch interfaces with the AD9850 DDS 125MHz synthesizer board to make a simple yet powerful home made function generator.  
 **Requirements:**
 - AD9850 DDS 125MHz synthesizer board.
 - 16x2 LCD display with I2C driver.
