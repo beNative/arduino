@@ -62,7 +62,7 @@ void loop() {
   int d = digitalRead(PIN_BUTTON_DOWN);
   */
 
-  int s;
+  int s; // steering
   if ((y > 507) && (y < 513))
   {
     s = 0;
@@ -76,7 +76,7 @@ void loop() {
     s = map(y, 0, 507, 9, 16);
   }
 
-  int t;
+  int t; // throttle
   if (x >= 508)
   {
     t = map(x, 500, 1023, 0, 7);
