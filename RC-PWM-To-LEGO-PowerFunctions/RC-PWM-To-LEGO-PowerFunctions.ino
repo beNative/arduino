@@ -1,15 +1,17 @@
 /*
   Author: Tim Sinaeve (2015)
+  
   Reads PWM signals from a RC receiver and transmits the signals to a IR diode
-  to control Lego Power Functions.
+  to control Lego Power Functions in combination with the standard 2 channel
+  LEGO IR receivers.
   The PWM signals are translated to Lego Powerfunctions signals with support for
-  proportional control. Works on all channels.
+  proportional control (7 steps per channel). 
   Use this to control your Lego Power Functions with the standard Lego IR
   receivers.
 
   This sketch is based on code from rcarduino.blogspot.com
 
-  See related posts
+  See related posts for the technical details about this setup:
     http://rcarduino.blogspot.co.uk/2012/01/how-to-read-rc-receiver-with.html
     http://rcarduino.blogspot.co.uk/2012/03/need-more-interrupts-to-read-more.html
     http://rcarduino.blogspot.co.uk/2012/01/can-i-control-more-than-x-servos-with.html
@@ -117,7 +119,7 @@ void setup()
   CRCArduinoFastServos::begin();
 
   // using the PinChangeInt library, attach the interrupts used to read the
-  //channels
+  // channels
   PCintPort::attachInterrupt(THROTTLE_IN_PIN, calcThrottle, CHANGE);
   PCintPort::attachInterrupt(STEERING_IN_PIN, calcSteering, CHANGE);
   PCintPort::attachInterrupt(AUX_IN_PIN, calcAux, CHANGE);
