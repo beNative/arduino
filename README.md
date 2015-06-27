@@ -22,7 +22,7 @@ The [AD9850-Frequency-Generator.ino](http://github.com/beNative/arduino/blob/mas
 **Requirements:**
 - AD9850 DDS 125MHz synthesizer board.
 - 16x2 LCD display with I2C driver.
-- Arduino Pro Mini.
+- Arduino Pro Mini compatible board.
 - Rotary encoder.
 - A fancy enclosure.
 - Battery.
