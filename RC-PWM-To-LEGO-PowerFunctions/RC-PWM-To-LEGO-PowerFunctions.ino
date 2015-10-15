@@ -46,19 +46,22 @@ const byte AUX_FLAG      = 4;
 // holds the update flags defined above
 volatile uint8_t bUpdateFlagsShared;
 
-// shared variables are updated by the ISR and read by loop.
-// In loop we immediatley take local copies so that the ISR can keep ownership of the
-// shared ones. To access these in loop
-// we first turn interrupts off with noInterrupts
-// we take a copy to use in loop and the turn interrupts back on
-// as quickly as possible, this ensures that we are always able to receive new signals
+/*
+ Shared variables are updated by the ISR and read by loop.
+ In the  loop we immediatley take local copies so that the ISR can keep ownership of the
+ shared ones. To access these in loop we first turn interrupts off with noInterrupts,
+ we take a copy to use in loop and the turn interrupts back on as quickly as possible.
+ This ensures that we are always able to receive new signals.
+*/
 volatile uint16_t unThrottleInShared;
 volatile uint16_t unSteeringInShared;
 volatile uint16_t unAuxInShared;
 
-// These are used to record the rising edge of a pulse in the calcInput functions
-// They do not need to be volatile as they are only used in the ISR. If we wanted
-// to refer to these in loop and the ISR then they would need to be declared volatile
+/*
+ These are used to record the rising edge of a pulse in the calcInput functions.
+ They do not need to be volatile as they are only used in the ISR. If we wanted
+ to refer to these in loop and the ISR then they would need to be declared as volatile.
+*/
 uint16_t unThrottleInStart;
 uint16_t unSteeringInStart;
 uint16_t unAuxInStart;
