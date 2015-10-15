@@ -1,10 +1,10 @@
 /*
-* AD9850 based frequency generator using a rotary encoder for frequency tuning.
-* 
-* Based on  AD9851 DDS sketch by Andrew Smallbone at www.rocketnumbernine.com
-*
-* Author: Tim Sinaeve 
-* (12/02/2015)
+  AD9850 based frequency generator using a rotary encoder for frequency tuning.
+ 
+  Based on  AD9851 DDS sketch by Andrew Smallbone at www.rocketnumbernine.com
+
+  Author: Tim Sinaeve 
+  (12/02/2015)
 */
 
 #include <Wire.h>
@@ -25,6 +25,7 @@ const byte AD9850_RESET_PIN            = 11;    // (RST).
 const unsigned long AD9850_CLOCK_FREQUENCY = 125000000;
 
 // Settings
+// frequencies in Hz
 const unsigned long MIN_FREQ      = 0;
 const unsigned long MAX_FREQ      = 630000000; // max 63 MHz
 const unsigned long MAX_DELTA     = 100000000;
