@@ -27,4 +27,4 @@ The [AD9850-Frequency-Generator.ino](http://github.com/beNative/arduino/blob/mas
 - A fancy enclosure.
 - Battery.
 - 
-![AD9850 Frequency Generator](http://github.com/beNative/g)
+![AD9850 Frequency Generator](http://github.com/beNative/arduino/blob/master/AD9850-Frequency-Generator/AD9850-Frequency-Generator.png)
