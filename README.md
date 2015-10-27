@@ -20,9 +20,11 @@ The [RC-PWM-To-LEGO-PowerFunctions.ino](http://github.com/beNative/arduino/blob/
 ##AD9850 Frequency Generator
 The [AD9850-Frequency-Generator.ino](http://github.com/beNative/arduino/blob/master/AD9850-Frequency-Generator/AD9850-Frequency-Generator.ino) sketch interfaces with the AD9850 DDS 125MHz synthesizer board to make a simple yet powerful home made function generator.  
 **Requirements:**
-- AD9850 DDS 125MHz synthesizer board.
-- 16x2 LCD display with I2C driver.
-- Arduino Pro Mini compatible board.
-- Rotary encoder.
-- A fancy enclosure.
-- Battery.
+* AD9850 DDS 125MHz synthesizer board.
+* 16x2 LCD display with I2C driver.
+* Arduino Pro Mini compatible board.
+* Rotary encoder.
+* A fancy enclosure.
+* Battery.
+
+![AD9850 Frequency Generator](https://github.com/beNative/arduino/blob/master/AD9850-Frequency-Generator/AD9850-Frequency-Generator.png)
