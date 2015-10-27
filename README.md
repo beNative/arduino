@@ -11,7 +11,9 @@ The [RC-PWM-To-LEGO-PowerFunctions.ino](http://github.com/beNative/arduino/blob/
 
 ![PWM to LPF](https://github.com/beNative/arduino/blob/master/RC-PWM-To-LEGO-PowerFunctions/Power%20functions%20Receiver.JPG)
 
-![PWM to LPF](https://github.com/beNative/arduino/blob/master/RC-PWM-To-LEGO-PowerFunctions/Power%20functions%20Receiver.JPG)
+![PWM to LPF](https://github.com/beNative/arduino/blob/master/RC-PWM-To-LEGO-PowerFunctions/Battery%20Box%20-%20Inside.JPG)
+
+![PWM to LPF](https://github.com/beNative/arduino/blob/master/RC-PWM-To-LEGO-PowerFunctions/Battery%20Box%20-%20Inside.JPG)
 
 ##JoyStickShield To LEGO PowerFunctions
 [JoyStickShield-To-LEGO-PowerFunctions.ino](http://github.com/beNative/arduino/blob/master/JoyStickShield-To-LEGO-PowerFunctions/JoyStickShield-To-LEGO-PowerFunctions.ino) uses the popular Joystick Arduino Shield in combination with some inexpensive NRF40 transceivers to make a better wireless control than the default IR way. It supports fully proportional control on two channels.
