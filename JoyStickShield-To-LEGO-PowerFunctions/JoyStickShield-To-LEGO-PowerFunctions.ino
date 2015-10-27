@@ -12,18 +12,16 @@
 PowerFunctions pf(12, 0); // IR led connected to Arduino pin 12, channel 1
 
 // Arduino pin setup
-
-const byte PIN_BUTTON_SELECT = 1; // gets triggered when joystick is pressed
-
-const byte PIN_BUTTON_RIGHT  = 3;
-const byte PIN_BUTTON_LEFT   = 5;
-
-const byte PIN_BUTTON_DOWN   = 4;
-const byte PIN_BUTTON_UP     = 2;
-
-const byte PIN_ANALOG_X      = 0;
+// analog pins
+const byte PIN_ANALOG_X      = 0; 
 const byte PIN_ANALOG_Y      = 1;
 
+// digital pins
+const byte PIN_BUTTON_SELECT = 1; // gets triggered when joystick is pressed
+const byte PIN_BUTTON_UP     = 2;
+const byte PIN_BUTTON_RIGHT  = 3;
+const byte PIN_BUTTON_DOWN   = 4;
+const byte PIN_BUTTON_LEFT   = 5;
 
 void setup() {
   // Specify each pin connected to a pushbutton as an input.
@@ -55,12 +53,10 @@ void loop() {
   int x = analogRead(PIN_ANALOG_X);
   int y = analogRead(PIN_ANALOG_Y);
 
-  /*
   int l = digitalRead(PIN_BUTTON_LEFT);
   int r = digitalRead(PIN_BUTTON_RIGHT);
   int u = digitalRead(PIN_BUTTON_UP);
   int d = digitalRead(PIN_BUTTON_DOWN);
-  */
 
   int s; // steering
   if ((y > 507) && (y < 513))
