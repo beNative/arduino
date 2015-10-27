@@ -26,3 +26,5 @@ The [AD9850-Frequency-Generator.ino](http://github.com/beNative/arduino/blob/mas
 - Rotary encoder.
 - A fancy enclosure.
 - Battery.
+- 
+![AD9850 Frequency Generator](http://github.com/beNative/g)
