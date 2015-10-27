@@ -2,7 +2,7 @@
 Sources of my shared arduino projects currently maintained on [codebender](http://codebender.cc/search/find/?query=tim.sinaeve), where you can easily upload sketches directly to your Arduino board without the need to struggle through library dependencies.
 
 ##RC PWM To LEGO PowerFunctions
-The [RC-PWM-To-LEGO-PowerFunctions.ino](http://github.com/beNative/arduino/blob/master/RC-PWM-To-LEGO-PowerFunctions/RC-PWM-To-LEGO-PowerFunctions.ino) sketch converts a PWM signal from a typical RC receiver to the IR protocol used by LEGO Power Functions (which is open source BTW). It supports fully proportional control on two channels.  
+The [RC-PWM-To-LEGO-PowerFunctions.ino](http://github.com/beNative/arduino/blob/master/RC-PWM-To-LEGO-PowerFunctions/RC-PWM-To-LEGO-PowerFunctions.ino) sketch converts a PWM signal from a typical RC receiver to the IR protocol used by LEGO Power Functions (which is open source BTW). It supports *fully proportional control on all channels*.  
 See the pictures below with the system installed on the Lego Crawler 9398 (2 channels) and the Lego 42030 - Volvo L350F Front Loader (4 channels).
 
 **Requirements:**  
