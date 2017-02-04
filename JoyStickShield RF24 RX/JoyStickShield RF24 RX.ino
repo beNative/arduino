@@ -25,6 +25,7 @@ Funduino JoyStickShield v1.A RF24 RX
                             | Y-POT    | A1       |
                             +----------+----------+
 
+
 Based on examples at http://www.bajdi.com/
 
 REMARK: The NRF module is quite power hungry and might not function correctly
@@ -34,16 +35,27 @@ REMARK: The NRF module is quite power hungry and might not function correctly
 #include <SPI.h>
 #include <nRF24L01.h>
 #include <RF24.h>
-//#include <LiquidCrystal_I2C.h>
 
-#define CE_PIN   9
-#define CSN_PIN 10
+const byte CE_PIN  = 9;
+const byte CSN_PIN = 10;
 
 const uint64_t pipe = 0xE8E8F0F0E1LL; // Define the transmit pipe (LongLong)
 
 RF24 radio(CE_PIN, CSN_PIN); // NRF radio object
 
-int joystick[9];  // 9 element array holding Joystick readings
+struct JoyStick {
+  bool up;
+  bool down;
+  bool left;
+  bool right;
+  bool select;
+  bool e;
+  bool f;
+  int x;
+  int y;
+};
+
+JoyStick joystick;
 
 void setup() 
 {
@@ -59,31 +71,31 @@ void loop()
   while (radio.available())
   {
     // Read the data payload until we've received everything
-      radio.read(joystick, sizeof(joystick));
+      radio.read(&joystick, sizeof(joystick));
       Serial.print("X = ");
-      Serial.print(joystick[0]);
+      Serial.print(joystick.x);
       Serial.print(" Y = ");
-      Serial.print(joystick[1]);
+      Serial.print(joystick.y);
       Serial.print(" S = ");
-      Serial.print(joystick[2]);
+      Serial.print(joystick.select);
       Serial.print(" U = ");
-      Serial.print(joystick[3]);
-      digitalWrite(2, 1 - joystick[3]);
+      Serial.print(joystick.up);
+      //digitalWrite(2, 1 - joystick[3]);
       Serial.print(" D = ");
-      Serial.print(joystick[4]);
-      digitalWrite(3, 1 - joystick[4]);
+      Serial.print(joystick.down);
+      //digitalWrite(3, 1 - joystick[4]);
       Serial.print(" L = ");
-      Serial.print(joystick[5]);
-      digitalWrite(4, 1 - joystick[5]);
+      Serial.print(joystick.left);
+      //digitalWrite(4, 1 - joystick[5]);
       Serial.print(" R = ");
-      Serial.print(joystick[6]);
-      digitalWrite(5, 1 - joystick[6]);
+      Serial.print(joystick.right);
+      //digitalWrite(5, 1 - joystick[6]);
       Serial.print(" E = ");
-      Serial.print(joystick[7]);
-      digitalWrite(6, 1 - joystick[7]);
-      digitalWrite(7, joystick[8]);
+      Serial.print(joystick.e);
+      //digitalWrite(6, 1 - joystick[7]);
+      //digitalWrite(7, joystick[8]);
       Serial.print(" F = ");
-      Serial.println(joystick[8]);
+      Serial.println(joystick.f);
   }
   Serial.println("No radio available");
 }
