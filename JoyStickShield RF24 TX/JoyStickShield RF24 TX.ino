@@ -35,7 +35,7 @@ REMARK: The NRF module is quite power hungry and might not function correctly
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 
-//LiquidCrystal_I2C lcd(0x27, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE);
+LiquidCrystal_I2C lcd(0x27, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE);
 
 const byte PIN_BUTTON_UP     = 2;
 const byte PIN_BUTTON_RIGHT  = 3;
@@ -57,9 +57,46 @@ const uint64_t pipe = 0xE8E8F0F0E1LL; // Define the transmit pipe
 
 RF24 radio(CE_PIN, CSN_PIN); // Create a Radio
 
-int joystick[9];  // 9 element array holding Joystick readings
-char X[8] = "";
-char Y[8] = "";
+struct JoyStick {
+  bool up;
+  bool down;
+  bool left;
+  bool right;
+  bool select;
+  bool e;
+  bool f;
+  int x;
+  int y;
+};
+
+JoyStick joystick;
+
+char X[8] = "          ";
+char Y[8] = "          ";
+
+//Custom Character #0 (arrow up)
+byte SpecialChar0[8]={
+ B00000,
+ B00100,
+ B01110,
+ B10101,
+ B00100,
+ B00100,
+ B00100,
+ B00000
+};
+
+//Custom Character #1 (arrow down)
+byte SpecialChar1[8]={
+ B00000,
+ B00100,
+ B00100,
+ B00100,
+ B10101,
+ B01110,
+ B00100,
+ B00000
+};
 
 void setup()
 {
@@ -83,33 +120,48 @@ void setup()
 	radio.begin();
 	radio.openWritingPipe(pipe);
 
-/*
 	lcd.begin(16, 2); // initialize LCD
+	 // create a new custom character (MUST be placed after call to begin()
+	lcd.createChar(1, SpecialChar0); // we can create max 8 custom chars.
+	lcd.createChar(2, SpecialChar1);
 	lcd.backlight();  // switch backlight on
 	lcd.setCursor(0, 0);
-*/
 }
 
 void loop()
 {
-	joystick[0] = analogRead(JOYSTICK_X);
-	joystick[1] = analogRead(JOYSTICK_Y);
-	joystick[2] = digitalRead(PIN_BUTTON_SELECT);
-	joystick[3] = digitalRead(PIN_BUTTON_UP);
-	joystick[4] = digitalRead(PIN_BUTTON_DOWN);
-	joystick[5] = digitalRead(PIN_BUTTON_LEFT);
-	joystick[6] = digitalRead(PIN_BUTTON_RIGHT);
-	joystick[7] = digitalRead(PIN_BUTTON_E);
-	joystick[8] = digitalRead(PIN_BUTTON_F);
-	
-	/*
-	sprintf(X, "X=%3d S=%1dU=%1dD=%1d", joystick[0], joystick[2], joystick[3], joystick[4]);
+  joystick.x = analogRead(JOYSTICK_X);
+  joystick.y = analogRead(JOYSTICK_Y);
+
+  joystick.select = digitalRead(PIN_BUTTON_SELECT);
+  joystick.up     = digitalRead(PIN_BUTTON_UP);
+  joystick.down   = digitalRead(PIN_BUTTON_DOWN);
+  joystick.left   = digitalRead(PIN_BUTTON_LEFT);
+  joystick.right  = digitalRead(PIN_BUTTON_RIGHT);
+  joystick.e      = digitalRead(PIN_BUTTON_E);
+  joystick.f      = digitalRead(PIN_BUTTON_F);
+
+  radio.write(&joystick, sizeof(joystick));
+
+	sprintf(
+	  X,
+	  "X=%4d|%s%s%s%s",
+	  joystick.x,
+	  joystick.up?"  ":"\x01\A",
+	  joystick.down?"  ":"\x02\C",
+	  joystick.left?"  ":"\x7F\D",
+	  joystick.right?"  ":"\x7E\B"
+	);
 	lcd.setCursor(0, 0);
 	lcd.print(X);
 	lcd.setCursor(0, 1);
-	sprintf(Y, "Y=%3d ", joystick[1]);
+	sprintf(
+	  Y,
+	  "Y=%4d|%s %s%s",
+	  joystick.y,
+	  joystick.select?"      ":"SELECT",
+	  joystick.e?" ":"E",
+	  joystick.f?" ":"F"
+	);
 	lcd.print(Y);
-	*/
-
-	radio.write(joystick, sizeof(joystick));
 }
