@@ -14,8 +14,6 @@ CRGB leds[NUM_LEDS];
 #define BRIGHTNESS         255
 #define FRAMES_PER_SECOND  120
 
-
-
 /*
   LCD character display 16x2, 20x4, etc.
   Interface:  I2C
@@ -106,7 +104,7 @@ void juggle() {
   // eight colored dots, weaving in and out of sync with each other
   fadeToBlackBy( leds, NUM_LEDS, 20);
   byte dothue = 0;
-  for( int i = 0; i < 8; i++) {
+  for(int i = 0; i < 8; i++) {
     leds[beatsin16(i+7,0,NUM_LEDS)] |= CHSV(dothue, 200, 255);
     dothue += 32;
   }
@@ -147,10 +145,9 @@ void setup()
   Lcd.clear();
   Lcd.setCursor(0, 0);
   lcd.printf("H=%3dS=%3dV=%3d ");
-  //lcd.print(" H   S   V");
   // tell FastLED about the LED strip configuration
-  FastLED.addLeds<LED_TYPE,DATA_PIN,COLOR_ORDER>(leds, NUM_LEDS).setCorrection(TypicalLEDStrip);
-
+  FastLED.addLeds<LED_TYPE,DATA_PIN,COLOR_ORDER>(leds, NUM_LEDS)
+    .setCorrection(TypicalLEDStrip);
   FastLED.setBrightness(BRIGHTNESS);
 }
 
@@ -159,14 +156,12 @@ int i, j, k, l;
 // The loop function is called in an endless loop
 void loop()
 {
+  // read potentiometers
   i = analogRead(A0) >> 2;
- // j = analogRead(A1) >> 2;
   j = map(analogRead(A1), 219 , 1023, 0, 255);
-  //k = analogRead(A2);// >> 2;
   k = map(analogRead(A2), 0, 915, 0, 255);
   l = analogRead(A3) >> 7;
   Lcd.setCursor(0, 0);
-  //lcd.printf("H=%-3dS=%-3dV=%-3d ", i, j, k);
   lcd.printf("H%-4d S%-4d V%-4d ", i, j, k);
 
   if (l == 0)
@@ -198,7 +193,6 @@ void loop()
     Lcd.setCursor(0, 1);
     lcd.print("fire            ");
     Fire2012();
-
   }
   else
   {
