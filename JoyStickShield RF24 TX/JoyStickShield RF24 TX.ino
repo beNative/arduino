@@ -43,11 +43,11 @@ const byte PIN_BUTTON_E      = 6; // Additional buttons on the Funduino JoyStick
 const byte PIN_BUTTON_F      = 7;
 const byte PIN_BUTTON_SELECT = 8; // Select button is triggered when joystick is pressed
 const byte JOYSTICK_X        = A0;
-const byte JOYSTICK_Y = A1;
+const byte JOYSTICK_Y        = A1;
 
 // NRF pins
-const byte CE_PIN     = 9;
-const byte CSN_PIN    = 10;
+const byte CE_PIN  = 9;
+const byte CSN_PIN = 10;
 
 // NOTE: the "LL" at the end of the constant is "LongLong" type
 const uint64_t pipe = 0xE8E8F0F0E1LL; // Define the transmit pipe
