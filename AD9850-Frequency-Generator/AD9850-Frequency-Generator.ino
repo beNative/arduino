@@ -9,7 +9,7 @@
 
 #include <Wire.h>
 // note: the 'standard LiquidCrystal_I2C.h' does not work for us.
-#include "LiquidCrystal_I2C.h"
+#include <LiquidCrystal_I2C.h>
 #include <Switch.h>
 
 // Pin definitions
@@ -47,7 +47,7 @@ boolean lastA = false;
 
 // Objects
 Switch toggleSwitch = Switch(ENCODER_BUTTON_PIN);
-LiquidCrystal_I2C lcd(0x27, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE);
+//LiquidCrystal_I2C lcd(0x27, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE);
 
 void pulseHigh(byte pin)
 {

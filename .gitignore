@@ -1,0 +1,35 @@
+*.cproject
+.ino.cpp
+*.project
+/JoyStickShield RF24 TX/Release
+/JoyStickShield RF24 TX/.settings/language.settings.xml
+/JoyStickShield RF24 TX/.settings/org.eclipse.cdt.core.prefs
+/JoyStickShield RF24 RX/.settings/language.settings.xml
+/JoyStickShield RF24 RX/.settings/org.eclipse.cdt.core.prefs
+/JoyStickShield RF24 RX/Release
+/MultiFunctionShield/.settings/language.settings.xml
+/MultiFunctionShield/Release
+/MultiFunctionShield/.settings/org.eclipse.cdt.core.prefs
+/DisplayEncoderValues/Release
+/DisplayEncoderValues/.settings/language.settings.xml
+/DisplayEncoderValues/.settings/org.eclipse.cdt.core.prefs
+/RTC AT24C32 Module/.settings/language.settings.xml
+/RTC AT24C32 Module/.settings/org.eclipse.cdt.core.prefs
+/RTC AT24C32 Module/Release
+/JoyStickShield_RF24_RX/Release/*.d
+/JoyStickShield_RF24_RX/Release/*.o
+/JoyStickShield_RF24_RX/Release/libraries/RF24/1.2.0/*.o
+/JoyStickShield_RF24_RX/Release/libraries/RF24/1.2.0/pyRF24/*.mk
+/JoyStickShield_RF24_RX/Release/libraries/RF24/1.2.0/examples_linux/interrupts/*.mk
+*.mk
+*.d
+*.o
+*.prefs
+/JoyStickShield_RF24_RX/Release/makefile
+/JoyStickShield_RF24_TX/Release/makefile
+*.ar
+/.metadata
+*.hex
+*.elf
+*.eep
+makefile
