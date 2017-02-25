@@ -27,9 +27,10 @@ REMARK: The NRF module is quite power hungry and might not function correctly
         if it is powered through the USB-port of the Arduino.
 */
 #include <SPI.h>
-#include <nRF24L01.h>
+#include <nRF24L01.h> // uses https://github.com/TMRh20/RF24
 #include <RF24.h>
 #include <Wire.h>
+#include <LCD.h>
 #include <LiquidCrystal_I2C.h>
 
 LiquidCrystal_I2C lcd(0x27, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE);
@@ -66,8 +67,6 @@ struct JoyStick {
 };
 
 JoyStick joystick;
-
-
 
 //Custom Character #0 (arrow up)
 byte SpecialChar0[8]={
@@ -123,21 +122,18 @@ void setup()
   lcd.setCursor(0, 0);
 }
 
-char X[9] = "        ";
-char Y[9] = "        ";
-
-void displayJoystickValues()
+void displayJoystickValues(LCD &lcd, JoyStick &js)
 {
-
-
+  char X[9] = "        ";
+  char Y[9] = "        ";
   sprintf(
     X,
     "X=%4d|%s%s%s%s ",
-    joystick.x,
-    joystick.up?"  ":"\x01""A",
-    joystick.down?"  ":"\x02""C",
-    joystick.left?"  ":"\x7F""D",
-    joystick.right?"  ":"\x7E""B"
+    js.x,
+    js.up?"  ":"\x01""A",
+    js.down?"  ":"\x02""C",
+    js.left?"  ":"\x7F""D",
+    js.right?"  ":"\x7E""B"
   );
   lcd.setCursor(0, 0);
   lcd.print(X);
@@ -145,51 +141,31 @@ void displayJoystickValues()
   sprintf(
     Y,
     "Y=%4d|%s %s%s",
-    joystick.y,
-    joystick.select?"      ":"SELECT",
-    joystick.e?" ":"E",
-    joystick.f?" ":"F"
+    js.y,
+    js.select?"      ":"SELECT",
+    js.e?" ":"E",
+    js.f?" ":"F"
   );
   lcd.print(Y);
 }
 
+void readJoyStick(JoyStick &js)
+{
+  js.x = analogRead(JOYSTICK_X);
+  js.y = analogRead(JOYSTICK_Y);
 
+  js.select = digitalRead(PIN_BUTTON_SELECT);
+  js.up     = digitalRead(PIN_BUTTON_UP);
+  js.down   = digitalRead(PIN_BUTTON_DOWN);
+  js.left   = digitalRead(PIN_BUTTON_LEFT);
+  js.right  = digitalRead(PIN_BUTTON_RIGHT);
+  js.e      = digitalRead(PIN_BUTTON_E);
+  js.f      = digitalRead(PIN_BUTTON_F);
+}
 
 void loop()
 {
-  joystick.x = analogRead(JOYSTICK_X);
-  joystick.y = analogRead(JOYSTICK_Y);
-
-  joystick.select = digitalRead(PIN_BUTTON_SELECT);
-  joystick.up     = digitalRead(PIN_BUTTON_UP);
-  joystick.down   = digitalRead(PIN_BUTTON_DOWN);
-  joystick.left   = digitalRead(PIN_BUTTON_LEFT);
-  joystick.right  = digitalRead(PIN_BUTTON_RIGHT);
-  joystick.e      = digitalRead(PIN_BUTTON_E);
-  joystick.f      = digitalRead(PIN_BUTTON_F);
-
-//  radio.write(&joystick, sizeof(joystick));
-//  displayJoystickValues();
-
-  sprintf(
-    X,
-    "X=%4d|%s%s%s%s ",
-    joystick.x,
-    joystick.up?"  ":"\x01""A",
-    joystick.down?"  ":"\x02""C",
-    joystick.left?"  ":"\x7F""D",
-    joystick.right?"  ":"\x7E""B"
-  );
-  lcd.setCursor(0, 0);
-  lcd.print(X);
-  lcd.setCursor(0, 1);
-  sprintf(
-    Y,
-    "Y=%4d|%s %s%s",
-    joystick.y,
-    joystick.select?"      ":"SELECT",
-    joystick.e?" ":"E",
-    joystick.f?" ":"F"
-  );
-  lcd.print(Y);
+   readJoyStick(joystick);
+   radio.write(&joystick, sizeof(joystick));
+   displayJoystickValues(lcd, joystick);
 }
