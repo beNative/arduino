@@ -1,3 +1,8 @@
+  /*
+    Author: Tim Sinaeve
+    (c) 2017
+ */
+
 #include <Arduino.h>
 #include <TimerOne.h>
 #include <Wire.h>

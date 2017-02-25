@@ -1,3 +1,11 @@
+/*
+   Tim Sinaeve (c) 2017
+
+   A testsketch for the FastLED library.
+   (https://github.com/FastLED/FastLED)
+
+   Testroutines were copied from examples provided with the library.
+ */
 #include "Arduino.h"
 
 #include <FastLED.h>
@@ -5,7 +13,6 @@
 #include <PrintEx.h>
 
 #define DATA_PIN    11
-//#define CLK_PIN   4
 #define LED_TYPE    WS2811
 #define COLOR_ORDER GRB
 #define NUM_LEDS    8
